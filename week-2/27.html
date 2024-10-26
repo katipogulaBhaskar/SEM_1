@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallery</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 20px;
+        }
+        .gallery img {
+            max-width: 100%;
+            height: auto;
+            margin: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.6s;
+        }
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+    </style>
+
+</head>
+<body>
+    <h1 style="text-align: center; padding-top: 20px;">Image Gallery</h1>
+    <div class="gallery">
+        <img src="./image1.jfif" alt="Image 1">
+        <img src="./image2.jfif" alt="Image 2">
+        <img src="./image3.jfif" alt="Image 3">
+        <!-- Add more images as needed -->
+    </div>
+</body>
+</html>
