@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Three-Column Layout</title>
+    <style>
+        /* Base styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    width: 100%;
+    overflow: hidden; /* Clearfix */
+}
+
+/* Columns */
+.column {
+    width: 32%; /* Adjust width to accommodate margins */
+    float: left;
+    margin: 1%; /* Adds spacing between columns */
+    background-color: #f4f4f4;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Clearfix (alternative method) */
+.container::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+    .column {
+        width: 48%; /* Adjust width to accommodate margins */
+        margin: 1%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .column {
+        width: 98%; /* Full width for stacking vertically */
+        margin: 1% 0;
+        float: none; /* Remove float to stack vertically */
+    }
+}
+
+    </style>
+    
+</head>
+<body>
+    <div class="container">
+        <div class="column">Column 1</div>
+        <div class="column">Column 2</div>
+        <div class="column">Column 3</div>
+    </div>
+</body>
+</html>

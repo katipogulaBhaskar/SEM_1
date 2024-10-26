@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Component</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .card {
+            width: 300px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #fff;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            transition: transform 0.2s ease-in-out;
+        }
+        .card:hover {
+            transform: scale(1.05);
+        }
+        .card img {
+            width: 100%;
+            display: block;
+        }
+        .card .card-content {
+            padding: 15px;
+        }
+        .card .card-title {
+            font-size: 18px;
+            margin: 0;
+            font-weight: bold;
+        }
+        .card .card-description {
+            font-size: 14px;
+            color: #555;
+            margin-top: 10px;
+        }
+        .card .card-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 10px 20px;
+            background-color: rgba(0, 123, 255, 0.8);
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .card:hover .card-button {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <img src="image1.jfif" alt="Card Image">
+        <button class="card-button">Click Me</button>
+        <div class="card-content">
+            <h3 class="card-title">Card Title</h3>
+            <p class="card-description">This is a description of the card. It gives a brief overview of the content.</p>
+        </div>
+    </div>
+</body>
+</html>

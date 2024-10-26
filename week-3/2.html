@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Two-Column Layout</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .sidebar, .main-content {
+            display: inline-block;
+            vertical-align: top;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .sidebar {
+            width: 25%;
+            background-color: grey;
+        }
+
+        .main-content {
+            width: 75%;
+            background-color: #ffffff;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar, .main-content {
+                display: block;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="sidebar">
+            <h2>Sidebar</h2>
+            <p>This is the sidebar content. You can add links, widgets, or other content here.</p>
+        </div>
+        <div class="main-content">
+            <h2>Main Content</h2>
+            <p>This is the main content area. It will take up more space compared to the sidebar.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum vestibulum.</p>
+        </div>
+    </div>
+
+</body>
+</html>

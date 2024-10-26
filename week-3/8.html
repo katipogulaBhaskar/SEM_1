@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Two Floated Columns with Clearfix</title>
+    <style>
+        /* Basic styles for the columns and clearfix */
+       
+        .column {
+            width: 48%;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        .left-column {
+            float: left;
+        }
+        .right-column {
+            float: right;
+        }
+        /* Clearfix to prevent collapse */
+        .clearfix::after {
+            content: "";
+            display: table;
+
+           
+        }
+        /* Optional: Styling for visualization */
+        .left-column {
+            background-color: #f0f0f0;
+        }
+        .right-column {
+            background-color: #e0e0e0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container clearfix">
+        <div class="column left-column">
+            <h2>Left Column</h2>
+            <p>
+                This is the left column. It is floated to the left, taking up approximately half of the container's width.
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vel justo nec ante dictum tristique.
+            </p>
+        </div>
+        <div class="column right-column">
+            <h2>Right Column</h2>
+            <p>
+                This is the right column. It is floated to the right, taking up approximately half of the container's width.
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vel justo nec ante dictum tristique.
+            </p>
+        </div>
+    </div>
+</body>
+</html>

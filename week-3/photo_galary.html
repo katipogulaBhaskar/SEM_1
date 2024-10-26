@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Gallery</title>
+    <link rel="stylesheet" href="./photo_gallary.css">
+</head>
+<body>
+    <div class="gallery">
+        <div class="filters">
+            <button data-filter="all">All</button>
+            <button data-filter="nature">Nature</button>
+            <button data-filter="city">City</button>
+            <button data-filter="people">People</button>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item" data-category="nature">
+                <img src="./image1.jfif" alt="Nature 1">
+            </div>
+            <div class="gallery-item" data-category="city">
+                <img src="city1.jfif" alt="City 1">
+            </div>
+            <div class="gallery-item" data-category="people">
+                <img src="people1.jfif" alt="People 1">
+            </div>
+            <!-- Add more items here -->
+        </div>
+    </div>
+    
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox">
+        <span class="close">&times;</span>
+        <img class="lightbox-content" id="lightbox-img">
+    </div>
+    
+    <script src="scripts.js"></script>
+</body>
+</html>

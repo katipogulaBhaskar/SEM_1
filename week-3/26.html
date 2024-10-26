@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .decorative-line {
+  position: relative;
+  padding-left: 20px; /* Adjust to create space for the line */
+}
+
+.decorative-line::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 10px; /* Length of the decorative line */
+  height: 2px; /* Thickness of the decorative line */
+  background-color: #4CAF50; /* Color of the decorative line */
+  transform: translateY(-50%); /* Vertically centers the line relative to the first line of text */
+}
+
+    </style>
+</head>
+<body>
+    <p class="decorative-line">This is a paragraph with a decorative line before the first line of text. The line is purely decorative and can be customized in various ways.</p>
+
+    
+</body>
+</html>
