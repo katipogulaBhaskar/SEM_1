@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sticky Notes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #f0f0f0;
+        }
+        #noteContainer {
+            position: relative;
+        }
+        .note {
+            position: absolute;
+            background-color:palevioletred;
+            border: 1px solid #ccc;
+            padding: 10px;
+            width: 200px;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+            cursor: move;
+        }
+        .note .delete-btn {
+            background: #e57373;
+            border: none;
+            color: white;
+            padding: 2px 5px;
+            margin-left: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="noteContainer"></div>
+    <button onclick="createNote()">Add Note</button>
+
+    <script>
+        // Load notes from local storage
+        window.onload = function() {
+            loadNotes();
+        };
+
+        // Function to create a new sticky note
+        function createNote() {
+            const note = document.createElement('div');
+            note.className = 'note';
+            note.contentEditable = true;
+            note.innerHTML = 'New Note <button class="delete-btn">X</button>';
+            
+            // Set initial position
+            note.style.left = `${Math.random() * (window.innerWidth - 220)}px`;
+            note.style.top = `${Math.random() * (window.innerHeight - 120)}px`;
+
+            // Add delete button functionality
+            note.querySelector('.delete-btn').addEventListener('click', function() {
+                note.remove();
+                saveNotes();
+            });
+
+            // Make note draggable
+            note.addEventListener('mousedown', function(e) {
+                const offsetX = e.clientX - note.getBoundingClientRect().left;
+                const offsetY = e.clientY - note.getBoundingClientRect().top;
+
+                function onMouseMove(e) {
+                    note.style.left = `${e.clientX - offsetX}px`;
+                    note.style.top = `${e.clientY - offsetY}px`;
+                }
+
+                function onMouseUp() {
+                    document.removeEventListener('mousemove', onMouseMove);
+                    document.removeEventListener('mouseup', onMouseUp);
+                    saveNotes();
+                }
+
+                document.addEventListener('mousemove', onMouseMove);
+                document.addEventListener('mouseup', onMouseUp);
+            });
+
+            document.getElementById('noteContainer').appendChild(note);
+            saveNotes();
+        }
+
+        // Save notes positions and content to local storage
+        function saveNotes() {
+            const notes = Array.from(document.querySelectorAll('.note')).map(note => ({
+                content: note.innerHTML,
+                left: note.style.left,
+                top: note.style.top
+            }));
+            localStorage.setItem('notes', JSON.stringify(notes));
+        }
+
+        // Load notes from local storage
+        function loadNotes() {
+            const notes = JSON.parse(localStorage.getItem('notes') || '[]');
+            notes.forEach(note => {
+                const stickyNote = document.createElement('div');
+                stickyNote.className = 'note';
+                stickyNote.contentEditable = true;
+                stickyNote.innerHTML = note.content;
+
+                stickyNote.style.left = note.left;
+                stickyNote.style.top = note.top;
+
+                // Add delete button functionality
+                stickyNote.querySelector('.delete-btn').addEventListener('click', function() {
+                    stickyNote.remove();
+                    saveNotes();
+                });
+
+                // Make note draggable
+                stickyNote.addEventListener('mousedown', function(e) {
+                    const offsetX = e.clientX - stickyNote.getBoundingClientRect().left;
+                    const offsetY = e.clientY - stickyNote.getBoundingClientRect().top;
+
+                    function onMouseMove(e) {
+                        stickyNote.style.left = `${e.clientX - offsetX}px`;
+                        stickyNote.style.top = `${e.clientY - offsetY}px`;
+                    }
+
+                    function onMouseUp() {
+                        document.removeEventListener('mousemove', onMouseMove);
+                        document.removeEventListener('mouseup', onMouseUp);
+                        saveNotes();
+                    }
+
+                    document.addEventListener('mousemove', onMouseMove);
+                    document.addEventListener('mouseup', onMouseUp);
+                });
+
+                document.getElementById('noteContainer').appendChild(stickyNote);
+            });
+        }
+    </script>
+</body>
+</html>
